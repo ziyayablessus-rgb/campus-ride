@@ -295,6 +295,8 @@ The `bookings` rules are deliberately tight:
 
 ## 7. Running the Application
 
+Run these commands from the project root (the directory containing `package.json`).
+
 1. **Install dependencies:**
    ```bash
    npm install --legacy-peer-deps
@@ -305,6 +307,7 @@ The `bookings` rules are deliberately tight:
    ```bash
    npm run dev
    ```
+   You can also use `npm start` to start the same server.
 
 3. Open your browser at `http://localhost:3000` to view the application.
 

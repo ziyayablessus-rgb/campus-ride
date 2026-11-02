@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Dashboard — CampusRide</title>
+  <link rel="stylesheet" href="../vendor/boxicons/css/boxicons.min.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/bookings.css">
@@ -14,11 +15,11 @@
   <header class="site-header">
     <div class="header-container">
       <a href="./dashboard.html" class="brand-link">
-        <span class="brand-icon">🚕</span>
+        <span class="brand-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
         <span>CampusRide</span>
       </a>
       <nav class="nav-actions">
-        <span style="font-size: 0.85rem; color: #94a3b8; margin-right: 0.5rem;">Student Portal</span>
+        <span style="font-size: 0.85rem; color: var(--muted-gray); margin-right: 0.5rem;">Student Portal</span>
         <button id="logoutBtn" class="btn btn-outline-danger btn-sm">
           Log Out
         </button>
@@ -30,7 +31,6 @@
   <main class="dashboard-wrapper">
     <!-- Greeting Card -->
     <section class="greeting-card">
-      <span class="greeting-badge">Student Account</span>
       <h1 class="greeting-title">Welcome, <span id="studentName">Student</span></h1>
       <p class="greeting-subtitle">Need a taxi or motorbike ride? You're in the right place.</p>
     </section>
@@ -39,7 +39,7 @@
     <section class="stats-grid">
       <div class="stat-card">
         <span class="stat-label">Account Type</span>
-        <span class="stat-value" style="color: #0284c7;">Student</span>
+        <span class="stat-value" style="color: var(--primary-color);">Student</span>
         <span class="stat-note">Verified service seeker</span>
       </div>
 
@@ -67,7 +67,7 @@
         <div class="action-card">
           <div>
             <div class="action-card-header">
-              <div class="action-icon accent-amber">🔍</div>
+              <div class="action-icon accent-primary" data-rune="search"></div>
               <div>
                 <h3 class="action-title">Find Transport</h3>
               </div>
@@ -82,10 +82,10 @@
         </div>
 
         <!-- My Bookings Action Card -->
-        <div class="action-card" style="border-color: #0284c7;">
+        <div class="action-card" style="border-color: var(--primary-color);">
           <div>
             <div class="action-card-header">
-              <div class="action-icon accent-blue">📅</div>
+              <div class="action-icon accent-neutral" data-rune="calendar"></div>
               <div>
                 <h3 class="action-title">My Bookings</h3>
               </div>
@@ -105,7 +105,7 @@
   <!-- Coming Soon Modal Dialog -->
   <div id="comingSoonModal" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
-      <div class="modal-icon">🚀</div>
+      <div class="modal-icon"><i class="bx bx-rocket" aria-hidden="true"></i></div>
       <h3 class="modal-title">Next Module Feature</h3>
       <p id="modalFeatureText" class="modal-text">Coming in the next module.</p>
       <button id="closeModalBtn" class="btn btn-primary btn-block">
@@ -118,14 +118,14 @@
   <div id="myBookingsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="myBookingsTitle">
     <div class="modal-card booking-modal-card">
       <div class="booking-modal-head">
-        <div class="modal-icon">📅</div>
+        <div class="modal-icon" data-rune="calendar"></div>
         <h3 class="modal-title" id="myBookingsTitle">My Bookings</h3>
       </div>
 
       <div id="myBookingsList" class="bookings-list"></div>
 
       <div id="myBookingsEmpty" class="empty-state" style="display: none;">
-        <div class="empty-state-icon">🧾</div>
+        <div class="empty-state-icon" data-rune="receipt"></div>
         <h3 class="empty-state-title">No bookings yet</h3>
         <p class="empty-state-desc">
           Head to "Find Transport" and book a driver — your reservations will show up here.
@@ -145,6 +145,7 @@
   </footer>
 
   <!-- Student Dashboard Script -->
+  <script type="module" src="../js/hydrate-icons.js"></script>
   <script type="module" src="../js/student-dashboard.js"></script>
 </body>
 </html>

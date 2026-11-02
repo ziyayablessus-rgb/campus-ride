@@ -15,18 +15,15 @@ import {
   BOOKING_STATUS,
 } from '../bookings-service.js';
 import { showAlert, hideAlert, formatMWK } from '../utils.js';
+import { runeIcon } from '../icons.js';
 
 let currentFilter = 'all';
 let cachedProviders = [];
 let currentUser = null;
 let pendingProvider = null;
 
-// Phone icon for the call button (inline so the page needs no extra asset).
-const PHONE_ICON = `
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
-  </svg>`;
+// Phone icon for the call button (Rune Icons, inlined).
+const PHONE_ICON = runeIcon('phone');
 
 document.addEventListener('DOMContentLoaded', () => {
   // Protect page: require student role
@@ -215,7 +212,7 @@ function formatClockTime(isoString) {
 function createProviderCardHtml(provider) {
   const isTaxi = provider.providerType === 'taxi';
   const typeLabel = isTaxi ? 'Taxi Driver' : 'Motorbike Driver';
-  const avatarEmoji = isTaxi ? '🚕' : '🏍️';
+  const avatarIcon = isTaxi ? 'bx-taxi' : 'bx-cycling';
   const typeClass = isTaxi ? 'taxi' : 'motorbike';
 
   const providerId = provider.providerId || provider.id || '';
@@ -252,7 +249,7 @@ function createProviderCardHtml(provider) {
        </button>`;
 
   const awayNote = isAway
-    ? `<p class="provider-away-note">⏳ Away right now — back at ${escapeHtml(formatClockTime(availability.until))}</p>`
+    ? `<p class="provider-away-note">${runeIcon('clock')} Away right now — back at ${escapeHtml(formatClockTime(availability.until))}</p>`
     : '';
 
   return `
@@ -260,7 +257,7 @@ function createProviderCardHtml(provider) {
       <div>
         <div class="provider-card-top">
           <div class="provider-avatar ${typeClass}">
-            ${avatarEmoji}
+            <i class="bx ${avatarIcon}" aria-hidden="true"></i>
           </div>
           <span class="status-pill ${availability.pillClass}">${escapeHtml(availability.label)}</span>
         </div>
@@ -270,19 +267,19 @@ function createProviderCardHtml(provider) {
 
         <ul class="provider-details-list">
           <li class="provider-detail-item">
-            <span class="provider-detail-icon">🚗</span>
+            <span class="provider-detail-icon"><i class="bx bx-car" aria-hidden="true"></i></span>
             <span><strong>Vehicle:</strong> ${escapeHtml(vehicle)} ${regNumber}</span>
           </li>
           <li class="provider-detail-item">
-            <span class="provider-detail-icon">⏱️</span>
+            <span class="provider-detail-icon">${runeIcon('clock')}</span>
             <span><strong>Est. Pickup:</strong> ~${waitTime} mins</span>
           </li>
           <li class="provider-detail-item fare">
-            <span class="provider-detail-icon">💰</span>
+            <span class="provider-detail-icon">${runeIcon('money')}</span>
             <span><strong>Trip Fare:</strong> ${escapeHtml(priceText)}</span>
           </li>
           <li class="provider-detail-item">
-            <span class="provider-detail-icon">📞</span>
+            <span class="provider-detail-icon">${runeIcon('phone')}</span>
             <span><strong>Contact:</strong> ${escapeHtml(phone)}</span>
           </li>
         </ul>

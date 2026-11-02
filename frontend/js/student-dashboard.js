@@ -7,6 +7,7 @@
 
 import { requireAuth, logoutUser } from './auth.js';
 import { showComingSoonModal, closeComingSoonModal, formatMWK } from './utils.js';
+import { runeIcon } from './icons.js';
 import {
   subscribeToStudentBookings,
   updateBookingStatus,
@@ -215,17 +216,17 @@ function createMyBookingItemHtml(booking) {
 
       <ul class="booking-details-list">
         <li class="booking-detail-item">
-          <span>🕒</span>
+          <span>${runeIcon('clock')}</span>
           <strong>Pickup:</strong> ${escapeHtml(pickupLabel)}
           ${isPast && status !== BOOKING_STATUS.COMPLETED ? '<span class="booking-status status-cancelled">Time passed</span>' : ''}
         </li>
         <li class="booking-detail-item">
-          <span>🚕</span>
+          <span><i class="bx ${booking.providerType === 'motorbike' ? 'bx-cycling' : 'bx-taxi'}" aria-hidden="true"></i></span>
           <strong>Service:</strong> ${escapeHtml(booking.providerType === 'motorbike' ? 'Motorbike Driver' : 'Taxi Driver')}
           ${booking.vehicleName ? ` — ${escapeHtml(booking.vehicleName)}` : ''}
         </li>
         <li class="booking-detail-item">
-          <span>💰</span>
+          <span>${runeIcon('money')}</span>
           <strong>Fare:</strong> ${escapeHtml(fare ? formatMWK(fare) : 'Fare on request')}
         </li>
       </ul>

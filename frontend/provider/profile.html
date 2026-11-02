@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Provider Profile — CampusRide</title>
+  <link rel="stylesheet" href="../vendor/boxicons/css/boxicons.min.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
 
@@ -13,7 +15,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="./dashboard.html" class="brand-link">
-        <span class="brand-icon">🚕</span>
+        <span class="brand-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
         <span>CampusRide</span>
       </a>
       <nav class="nav-actions">
@@ -26,60 +28,76 @@
   </header>
 
   <!-- Profile Content Container -->
-  <main class="dashboard-wrapper">
-    <div class="section-header">
-      <div>
-        <h1 class="section-title" style="font-size: 1.5rem;">Provider Profile</h1>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Keep your transport details, fare, and availability up to date for students.
-        </p>
-      </div>
-    </div>
+  <main class="dashboard-wrapper profile-page">
+    <header class="profile-header">
+      <h1 class="profile-title">Provider Profile</h1>
+      <p class="profile-subtitle">
+        Keep your transport details, fare, and availability up to date for students.
+      </p>
+    </header>
 
     <!-- Alert / Feedback Banner -->
     <div id="alertBox" class="alert hidden" role="alert"></div>
 
-    <div class="profile-card">
-      <form id="profileForm" novalidate>
-        <!-- Availability Toggle Switch -->
-        <div class="toggle-switch-group">
-          <div>
-            <div class="toggle-info-title">Availability Status</div>
-            <div class="toggle-info-desc">When enabled, students can see you in transport search</div>
-          </div>
+    <form id="profileForm" class="profile-card" novalidate>
+      <!-- Availability Status -->
+      <section class="availability-panel" aria-labelledby="availabilityTitle">
+        <div class="availability-copy">
+          <h2 class="availability-title" id="availabilityTitle">Availability status</h2>
+          <p class="availability-desc">When enabled, students can see you in transport search.</p>
+        </div>
+
+        <div class="availability-controls">
+          <span id="availabilityBadge" class="availability-badge is-available" aria-live="polite">Available</span>
           <label class="toggle-switch">
-            <input type="checkbox" id="available" checked>
+            <input type="checkbox" id="available" checked aria-label="Available for student bookings">
             <span class="slider"></span>
           </label>
         </div>
+      </section>
 
-        <!-- Personal Details -->
-        <div class="form-row">
+      <!-- Personal Information -->
+      <section class="form-section" aria-labelledby="personalHeading">
+        <div class="form-section-head">
+          <h2 class="form-section-title" id="personalHeading">Personal Information</h2>
+          <p class="form-section-desc">Your contact details as students will see them.</p>
+        </div>
+
+        <div class="form-grid">
           <div class="form-group">
             <label for="providerName" class="form-label">Full Name <span class="required">*</span></label>
-            <input 
-              type="text" 
-              id="providerName" 
-              class="form-control" 
-              placeholder="e.g. John Banda" 
+            <input
+              type="text"
+              id="providerName"
+              class="form-control"
+              placeholder="e.g. John Banda"
+              autocomplete="name"
               required
             >
           </div>
 
           <div class="form-group">
             <label for="providerPhone" class="form-label">Contact Phone <span class="required">*</span></label>
-            <input 
-              type="tel" 
-              id="providerPhone" 
-              class="form-control" 
-              placeholder="e.g. 0991234567" 
+            <input
+              type="tel"
+              id="providerPhone"
+              class="form-control"
+              placeholder="e.g. 0991234567"
+              autocomplete="tel"
               required
             >
           </div>
         </div>
+      </section>
 
-        <!-- Service & Vehicle Details -->
-        <div class="form-row">
+      <!-- Vehicle Information -->
+      <section class="form-section" aria-labelledby="vehicleHeading">
+        <div class="form-section-head">
+          <h2 class="form-section-title" id="vehicleHeading">Vehicle Information</h2>
+          <p class="form-section-desc">The service you offer and the vehicle students should look for.</p>
+        </div>
+
+        <div class="form-grid">
           <div class="form-group">
             <label for="providerType" class="form-label">Service Type <span class="required">*</span></label>
             <select id="providerType" class="form-control" required>
@@ -89,67 +107,79 @@
           </div>
 
           <div class="form-group">
-            <label for="vehicleName" class="form-label">Vehicle Make & Model</label>
-            <input 
-              type="text" 
-              id="vehicleName" 
-              class="form-control" 
+            <label for="vehicleName" class="form-label">Vehicle Make &amp; Model</label>
+            <input
+              type="text"
+              id="vehicleName"
+              class="form-control"
               placeholder="e.g. Toyota Corolla / Boxer 150"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="form-group span-2">
+            <label for="vehicleRegistration" class="form-label">Registration Number</label>
+            <input
+              type="text"
+              id="vehicleRegistration"
+              class="form-control"
+              placeholder="e.g. NA 1234 / MZ 5678"
+              autocomplete="off"
             >
           </div>
         </div>
+      </section>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="vehicleRegistration" class="form-label">Registration Number</label>
-            <input 
-              type="text" 
-              id="vehicleRegistration" 
-              class="form-control" 
-              placeholder="e.g. NA 1234 / MZ 5678"
-            >
-          </div>
+      <!-- Pricing & Operations -->
+      <section class="form-section" aria-labelledby="pricingHeading">
+        <div class="form-section-head">
+          <h2 class="form-section-title" id="pricingHeading">Pricing &amp; Operations</h2>
+          <p class="form-section-desc">Set your standard fare and the average pickup time.</p>
+        </div>
 
+        <div class="form-grid">
           <div class="form-group">
             <label for="price" class="form-label">Standard Trip Price (MWK) <span class="required">*</span></label>
-            <input 
-              type="number" 
-              id="price" 
-              class="form-control" 
-              min="0" 
-              step="100" 
-              placeholder="e.g. 5000" 
+            <input
+              type="number"
+              id="price"
+              class="form-control"
+              min="0"
+              step="100"
+              placeholder="e.g. 5000"
+              aria-describedby="priceHint"
               required
             >
-            <span class="form-hint">Fare per student ride in Malawi Kwacha</span>
+            <span class="form-hint" id="priceHint">Fare per student ride in Malawi Kwacha</span>
+          </div>
+
+          <div class="form-group">
+            <label for="estimatedWaitTime" class="form-label">Estimated Waiting Time (Minutes) <span class="required">*</span></label>
+            <input
+              type="number"
+              id="estimatedWaitTime"
+              class="form-control"
+              min="1"
+              max="120"
+              placeholder="e.g. 10"
+              aria-describedby="waitTimeHint"
+              required
+            >
+            <span class="form-hint" id="waitTimeHint">Average pickup waiting time in minutes</span>
           </div>
         </div>
+      </section>
 
-        <div class="form-group">
-          <label for="estimatedWaitTime" class="form-label">Estimated Waiting Time (Minutes) <span class="required">*</span></label>
-          <input 
-            type="number" 
-            id="estimatedWaitTime" 
-            class="form-control" 
-            min="1" 
-            max="120" 
-            placeholder="e.g. 10" 
-            required
-          >
-          <span class="form-hint">Average pickup waiting time in minutes</span>
-        </div>
-
-        <!-- Save Button -->
-        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem;">
-          <button type="submit" id="saveBtn" class="btn btn-primary" style="min-width: 180px;">
-            Save Changes
-          </button>
-          <a href="./dashboard.html" class="btn btn-secondary">
-            Cancel
-          </a>
-        </div>
-      </form>
-    </div>
+      <!-- Actions -->
+      <div class="profile-actions">
+        <button type="submit" id="saveBtn" class="btn btn-primary profile-save-btn">
+          Save Changes
+        </button>
+        <a href="./dashboard.html" class="btn btn-secondary profile-cancel-btn">
+          Cancel
+        </a>
+      </div>
+    </form>
   </main>
 
   <footer class="site-footer">

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find Transport — CampusRide</title>
+  <link rel="stylesheet" href="../vendor/boxicons/css/boxicons.min.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/find-transport.css">
@@ -15,7 +16,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="./dashboard.html" class="brand-link">
-        <span class="brand-icon">🚕</span>
+        <span class="brand-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
         <span>CampusRide</span>
       </a>
       <nav class="nav-actions">
@@ -48,15 +49,15 @@
           All Services
         </button>
         <button type="button" class="filter-btn" data-type="taxi">
-          🚕 Taxis
+          <i class="bx bx-taxi" aria-hidden="true"></i> Taxis
         </button>
         <button type="button" class="filter-btn" data-type="motorbike">
-          🏍️ Motorbikes
+          <i class="bx bx-cycling" aria-hidden="true"></i> Motorbikes
         </button>
       </div>
 
       <button type="button" id="refreshBtn" class="refresh-btn">
-        <span id="refreshIcon">🔄</span> Refresh Drivers
+        <span id="refreshIcon" data-rune="refresh"></span> Refresh Drivers
       </button>
     </div>
 
@@ -73,7 +74,7 @@
 
       <!-- Empty State -->
       <div id="emptyState" class="empty-state" style="display: none;">
-        <div class="empty-state-icon">📭</div>
+        <div class="empty-state-icon" data-rune="inbox"></div>
         <h3 class="empty-state-title">No drivers currently available</h3>
         <p class="empty-state-desc">
           There are no service providers available matching your filter right now. Check back soon or try another category.
@@ -86,7 +87,7 @@
   <div id="bookingModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
     <div class="modal-card booking-modal-card">
       <div class="booking-modal-head">
-        <div class="modal-icon">🧾</div>
+        <div class="modal-icon" data-rune="receipt"></div>
         <h3 class="modal-title" id="bookingModalTitle">Confirm Your Booking</h3>
       </div>
 
@@ -133,6 +134,7 @@
   </footer>
 
   <!-- Script -->
+  <script type="module" src="../js/hydrate-icons.js"></script>
   <script type="module" src="../js/student/find-transport.js"></script>
 </body>
 </html>

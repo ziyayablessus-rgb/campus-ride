@@ -15,6 +15,7 @@ import {
   BOOKING_STATUS,
 } from './bookings-service.js';
 import { formatMWK } from './utils.js';
+import { runeIcon } from './icons.js';
 
 let providerUid = null;
 let providerData = null;
@@ -550,16 +551,16 @@ function buildNextUpHtml(label, booking, kind, overlap) {
 
   const overlapNote = overlap
     ? (kind === 'ride'
-        ? `<div class="next-up-overlap">⚠️ A request at ${escapeHtml(formatOverlapTime(overlap.pickupTime))} clashes with this ride</div>`
-        : `<div class="next-up-overlap">⚠️ Clashes with your ride at ${escapeHtml(formatOverlapTime(overlap.pickupTime))}</div>`)
+        ? `<div class="next-up-overlap">${runeIcon('alert')} A request at ${escapeHtml(formatOverlapTime(overlap.pickupTime))} clashes with this ride</div>`
+        : `<div class="next-up-overlap">${runeIcon('alert')} Clashes with your ride at ${escapeHtml(formatOverlapTime(overlap.pickupTime))}</div>`)
     : '';
 
   return `
     <div class="next-up-badge">${escapeHtml(label)}</div>
     <div class="next-up-main">
       <div class="next-up-name">${name}</div>
-      <div class="next-up-meta">🕒 ${time}</div>
-      <div class="next-up-meta">💰 ${fare ? escapeHtml(formatMWK(fare)) : 'Fare on request'}</div>
+      <div class="next-up-meta">${runeIcon('clock')} ${time}</div>
+      <div class="next-up-meta">${runeIcon('money')} ${fare ? escapeHtml(formatMWK(fare)) : 'Fare on request'}</div>
       ${overlapNote}
     </div>
     <div class="next-up-actions">${action}</div>
@@ -804,7 +805,7 @@ function createBookingItemHtml(booking, overlap) {
 
   const overlapRow = overlap
     ? `<li class="booking-detail-item booking-overlap-warning">
-         <span>⚠️</span>
+         <span>${runeIcon('alert')}</span>
          <strong>Clashes:</strong> you already have a ride at ${escapeHtml(formatOverlapTime(overlap.pickupTime))}
        </li>`
     : '';
@@ -840,21 +841,21 @@ function createBookingItemHtml(booking, overlap) {
 
       <ul class="booking-details-list">
         <li class="booking-detail-item">
-          <span>🕒</span>
+          <span>${runeIcon('clock')}</span>
           <strong>Pickup:</strong> ${escapeHtml(pickupLabel)}
           ${isPast && status !== BOOKING_STATUS.COMPLETED ? '<span class="booking-status status-cancelled">Time passed</span>' : ''}
         </li>
         ${overlapRow}
         <li class="booking-detail-item">
-          <span>💰</span>
+          <span>${runeIcon('money')}</span>
           <strong>Fare:</strong> ${escapeHtml(fare ? formatMWK(fare) : 'Fare on request')}
         </li>
         <li class="booking-detail-item">
-          <span>📞</span>
+          <span>${runeIcon('phone')}</span>
           <strong>Contact:</strong> ${studentPhone || 'Not provided'}
         </li>
         <li class="booking-detail-item">
-          <span>🚕</span>
+          <span><i class="bx ${booking.providerType === 'motorbike' ? 'bx-cycling' : 'bx-taxi'}" aria-hidden="true"></i></span>
           <strong>Service:</strong> ${escapeHtml(booking.providerType === 'motorbike' ? 'Motorbike Driver' : 'Taxi Driver')}
           ${booking.vehicleName ? ` — ${escapeHtml(booking.vehicleName)}` : ''}
         </li>

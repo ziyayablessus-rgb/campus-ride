@@ -12,7 +12,7 @@
 
 /* User Greeting Header Card */
 .greeting-card {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #000000 0%, #0d2a4d 100%);
   color: #ffffff;
   border-radius: var(--radius-lg);
   padding: 1.75rem;
@@ -29,25 +29,9 @@
   right: -20px;
   width: 130px;
   height: 130px;
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(22, 119, 255, 0.28);
   border-radius: 50%;
   pointer-events: none;
-}
-
-.greeting-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: rgba(245, 158, 11, 0.2);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.65rem;
-  border-radius: 9999px;
-  margin-bottom: 0.75rem;
 }
 
 .greeting-title {
@@ -57,7 +41,7 @@
 }
 
 .greeting-subtitle {
-  color: #94a3b8;
+  color: var(--muted-gray);
   font-size: 0.95rem;
 }
 
@@ -74,7 +58,7 @@
 
 .status-available {
   background: var(--success-bg);
-  color: #065f46;
+  color: #0b6b3a;
 }
 
 .status-available::before {
@@ -88,8 +72,8 @@
 
 /* Temporarily away - the provider said when they will be back */
 .status-away {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--warning-bg);
+  color: var(--warning);
 }
 
 .status-away::before {
@@ -97,13 +81,13 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #d97706;
+  background-color: var(--warning);
   display: inline-block;
 }
 
 .status-unavailable {
   background: var(--danger-bg);
-  color: #991b1b;
+  color: #a50e0e;
 }
 .status-unavailable::before {
   content: "";
@@ -188,7 +172,7 @@
 }
 
 .action-card:hover {
-  border-color: #cbd5e1;
+  border-color: var(--muted-gray);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
@@ -204,26 +188,26 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background: #f1f5f9;
+  background: var(--soft-gray);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
 }
 
-.action-icon.accent-amber {
+.action-icon.accent-primary {
   background: var(--primary-light);
-  color: #92400e;
+  color: var(--primary-hover);
 }
 
-.action-icon.accent-blue {
-  background: #e0f2fe;
-  color: #0369a1;
+.action-icon.accent-neutral {
+  background: var(--soft-gray);
+  color: var(--text-main);
 }
 
-.action-icon.accent-green {
-  background: #dcfce7;
-  color: #15803d;
+.action-icon.accent-success {
+  background: var(--success-bg);
+  color: #0b6b3a;
 }
 
 .action-title {
@@ -239,50 +223,7 @@
   flex: 1;
 }
 
-/* Forms in Profile Page */
-.profile-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-@media (max-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-}
-
-.toggle-switch-group {
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-.toggle-info-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.toggle-info-desc {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
+/* Toggle switch (shared by the provider dashboard and profile page) */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -303,7 +244,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cbd5e1;
+  background-color: var(--muted-gray);
   transition: 0.3s;
   border-radius: 34px;
 }
@@ -321,7 +262,7 @@
 }
 
 input:checked + .slider {
-  background-color: var(--success);
+  background-color: var(--primary-color);
 }
 
 input:checked + .slider:before {
@@ -344,9 +285,9 @@ input:checked + .slider:before {
   height: 30px;
   flex: 0 0 30px;
   border-radius: 50%;
-  border: 1px solid #cbd5e1;
-  background: #f1f5f9;
-  color: #334155;
+  border: 1px solid var(--muted-gray);
+  background: var(--soft-gray);
+  color: var(--text-main);
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1;
@@ -358,8 +299,8 @@ input:checked + .slider:before {
 }
 
 .price-stepper-btn:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+  background: #ececec;
+  color: var(--text-main);
 }
 
 .price-stepper-btn:disabled {
@@ -388,7 +329,7 @@ input:checked + .slider:before {
 .price-stepper-hint {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #d97706;
+  color: var(--primary-color);
   min-height: 1rem;
   margin-top: 0.25rem;
 }
@@ -496,7 +437,7 @@ input:checked + .slider:before {
 .availability-countdown {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--warning, #d97706);
+  color: var(--warning);
   min-height: 1.2rem;
 }
 
@@ -521,7 +462,7 @@ input:checked + .slider:before {
 }
 
 .schedule-message.is-danger {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 /* Next up card */
@@ -535,9 +476,9 @@ input:checked + .slider:before {
 
 .next-up-badge {
   align-self: flex-start;
-  background: #ecfdf5;
-  color: #047857;
-  border: 1px solid #a7f3d0;
+  background: var(--success-bg);
+  color: #0b6b3a;
+  border: 1px solid #bfe3cc;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -561,8 +502,8 @@ input:checked + .slider:before {
   margin-top: 0.35rem;
   padding: 0.35rem 0.6rem;
   border-radius: var(--radius-md);
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--warning-bg);
+  color: var(--warning);
   font-size: 0.78rem;
   font-weight: 600;
 }

@@ -24,6 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const priceInput = document.getElementById('price');
   const waitTimeInput = document.getElementById('estimatedWaitTime');
   const availableCheckbox = document.getElementById('available');
+  const availabilityBadge = document.getElementById('availabilityBadge');
+
+  // Keep the visible status badge in sync with the toggle
+  const syncAvailabilityBadge = () => {
+    if (!availabilityBadge || !availableCheckbox) return;
+    const isAvailable = availableCheckbox.checked;
+    availabilityBadge.textContent = isAvailable ? 'Available' : 'Unavailable';
+    availabilityBadge.classList.toggle('is-available', isAvailable);
+    availabilityBadge.classList.toggle('is-unavailable', !isAvailable);
+  };
+
+  if (availableCheckbox) {
+    availableCheckbox.addEventListener('change', syncAvailabilityBadge);
+  }
+  syncAvailabilityBadge();
 
   // Guard page: Require 'provider' role
   requireAuth('provider', async (user) => {
@@ -68,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (priceInput) priceInput.value = providerData.price !== undefined ? providerData.price : 0;
       if (waitTimeInput) waitTimeInput.value = providerData.estimatedWaitTime !== undefined ? providerData.estimatedWaitTime : 10;
       if (availableCheckbox) availableCheckbox.checked = providerData.available !== false;
+      syncAvailabilityBadge();
     }
   });
 

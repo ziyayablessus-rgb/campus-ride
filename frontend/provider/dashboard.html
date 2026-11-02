@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Provider Dashboard — CampusRide</title>
+  <link rel="stylesheet" href="../vendor/boxicons/css/boxicons.min.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/bookings.css">
@@ -14,7 +15,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="./dashboard.html" class="brand-link">
-        <span class="brand-icon">🚕</span>
+        <span class="brand-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
         <span>CampusRide</span>
       </a>
       <nav class="nav-actions">
@@ -30,7 +31,6 @@
   <main class="dashboard-wrapper">
     <!-- Greeting Card -->
     <section class="greeting-card">
-      <span class="greeting-badge">Service Provider Portal</span>
       <h1 class="greeting-title">Welcome, <span id="providerName">Provider</span></h1>
       <p class="greeting-subtitle">Manage your transport availability, rates, and rider inquiries.</p>
     </section>
@@ -58,7 +58,7 @@
         <span class="stat-label">Standard Price</span>
         <div class="price-stepper">
           <button type="button" class="price-stepper-btn" id="priceDecBtn" aria-label="Decrease price">−</button>
-          <div class="price-stepper-value" id="providerPrice" style="color: #d97706;">MWK 0</div>
+          <div class="price-stepper-value" id="providerPrice" style="color: var(--primary-color);">MWK 0</div>
           <button type="button" class="price-stepper-btn" id="priceIncBtn" aria-label="Increase price">+</button>
         </div>
         <button type="button" class="btn btn-secondary btn-sm price-save-btn" id="priceSaveBtn">Save Price</button>
@@ -92,7 +92,7 @@
         <!-- Availability -->
         <div class="schedule-card">
           <div class="schedule-card-head">
-            <span class="schedule-card-icon">🟢</span>
+            <span class="schedule-card-icon"><i class="bx bx-toggle-right" aria-hidden="true"></i></span>
             <div>
               <h3 class="schedule-card-title">Availability</h3>
               <p class="schedule-card-desc">Turn this off to disappear from student search.</p>
@@ -124,7 +124,7 @@
         <!-- Next Up -->
         <div class="schedule-card">
           <div class="schedule-card-head">
-            <span class="schedule-card-icon">⏭️</span>
+            <span class="schedule-card-icon"><i class="bx bx-list-check" aria-hidden="true"></i></span>
             <div>
               <h3 class="schedule-card-title">Next Up</h3>
               <p class="schedule-card-desc">Your next job at a glance.</p>
@@ -153,7 +153,7 @@
       <div id="bookingsList" class="bookings-list"></div>
 
       <div id="bookingsEmpty" class="empty-state" style="display: none;">
-        <div class="empty-state-icon">📭</div>
+        <div class="empty-state-icon" data-rune="inbox"></div>
         <h3 class="empty-state-title">No ride requests yet</h3>
         <p class="empty-state-desc">
           When a student books you, the request appears here instantly with the pickup time they chose.
@@ -161,52 +161,6 @@
       </div>
     </section>
 
-    <!-- Provider Actions Grid -->
-    <section>
-      <div class="section-header">
-        <h2 class="section-title">Provider Management</h2>
-      </div>
-
-      <div class="actions-grid">
-        <!-- Edit Profile (Working Feature) -->
-        <div class="action-card" style="border-color: #f59e0b;">
-          <div>
-            <div class="action-card-header">
-              <div class="action-icon accent-amber">⚙️</div>
-              <div>
-                <h3 class="action-title">Provider Profile</h3>
-              </div>
-            </div>
-            <p class="action-desc">
-              Edit vehicle details, registration plate, trip price, waiting time, and availability.
-            </p>
-          </div>
-          <a href="./profile.html" class="btn btn-primary btn-block">
-            Edit Profile
-          </a>
-        </div>
-
-        <!-- My Schedule -->
-        <div class="action-card">
-          <div>
-            <div class="action-card-header">
-              <div class="action-icon accent-blue">🕒</div>
-              <div>
-                <h3 class="action-title">My Schedule</h3>
-              </div>
-            </div>
-            <p class="action-desc">
-              Manage availability, set a return time, and see your next ride.
-            </p>
-          </div>
-          <button id="myScheduleBtn" class="btn btn-secondary btn-block">
-            Open My Schedule
-          </button>
-        </div>
-
-      </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -214,6 +168,7 @@
   </footer>
 
   <!-- Provider Dashboard Script -->
+  <script type="module" src="../js/hydrate-icons.js"></script>
   <script type="module" src="../js/provider-dashboard.js"></script>
 </body>
 </html>

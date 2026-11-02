@@ -1,26 +1,37 @@
 /* ==========================================================================
    Transport Booking App — Main Global Stylesheet
-   Theme: Modern Clean Transport (Amber / Slate / Emerald)
+   Theme: Modern Clean Transport (White / Black / Electric Blue)
    Mobile-first, responsive, framework-free
    ========================================================================== */
 
 :root {
-  --primary-color: #f59e0b;       /* Taxi Amber */
-  --primary-hover: #d97706;
-  --primary-light: #fef3c7;
-  --secondary-color: #0284c7;     /* Sky accent */
-  --dark-bg: #0f172a;             /* Slate 900 */
-  --card-bg: #ffffff;
-  --body-bg: #f8fafc;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --border-focus: #f59e0b;
-  --success: #10b981;
-  --success-bg: #d1fae5;
-  --danger: #ef4444;
-  --danger-bg: #fee2e2;
-  --warning: #f59e0b;
+  /* Brand palette */
+  --white: #ffffff;          /* Primary background */
+  --black: #000000;          /* Primary text */
+  --soft-gray: #f6f6f6;      /* Secondary background */
+  --muted-gray: #cacaca;     /* Secondary text, borders, inactive elements */
+  --light-blue: #cee5ff;     /* Accent background */
+  --electric-blue: #1677ff;  /* Links, active states, important actions */
+
+  /* Semantic tokens */
+  --primary-color: var(--electric-blue);
+  --primary-hover: #0a5fd6;          /* Darker electric blue for hover */
+  --primary-light: var(--light-blue);
+  --secondary-color: var(--electric-blue);
+  --dark-bg: var(--black);
+  --card-bg: var(--white);
+  --body-bg: var(--soft-gray);
+  --text-main: var(--black);
+  --text-muted: #595959;             /* Readable secondary copy */
+  --text-subtle: var(--muted-gray);  /* Borders, placeholders, inactive icons */
+  --border-color: var(--muted-gray);
+  --border-focus: var(--electric-blue);
+  --success: #0f9d58;
+  --success-bg: #e6f4ea;
+  --danger: #d93025;
+  --danger-bg: #fce8e6;
+  --warning: #b26a00;
+  --warning-bg: #fff4e5;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -29,6 +40,25 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.12);
   --transition: all 0.2s ease-in-out;
+}
+
+/* ==========================================================================
+   Icon system
+   Boxicons (vendored webfont) for vehicle/action glyphs, Rune Icons
+   (inline SVG) for interface glyphs.
+   ========================================================================== */
+.bx {
+  font-size: 1em;
+  line-height: 1;
+  vertical-align: -0.125em;
+}
+
+.rune-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
 }
 
 * {
@@ -82,7 +112,7 @@ body {
 
 .brand-icon {
   background: var(--primary-color);
-  color: var(--dark-bg);
+  color: var(--white);
   width: 30px;
   height: 30px;
   border-radius: var(--radius-sm);
@@ -100,7 +130,7 @@ body {
 }
 
 .nav-link {
-  color: #cbd5e1;
+  color: var(--muted-gray);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -140,25 +170,25 @@ body {
 
 .btn-primary {
   background-color: var(--primary-color);
-  color: #1e293b;
+  color: var(--white);
   border-color: var(--primary-color);
 }
 
 .btn-primary:hover:not(:disabled) {
   background-color: var(--primary-hover);
   border-color: var(--primary-hover);
-  color: #0f172a;
+  color: var(--white);
 }
 
 .btn-secondary {
-  background-color: #ffffff;
+  background-color: var(--white);
   color: var(--text-main);
   border-color: var(--border-color);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: #f1f5f9;
-  border-color: #cbd5e1;
+  background-color: var(--soft-gray);
+  border-color: var(--muted-gray);
 }
 
 .btn-dark {
@@ -167,7 +197,7 @@ body {
 }
 
 .btn-dark:hover:not(:disabled) {
-  background-color: #1e293b;
+  background-color: #1a1a1a;
 }
 
 .btn-outline-danger {
@@ -178,6 +208,18 @@ body {
 
 .btn-outline-danger:hover:not(:disabled) {
   background-color: var(--danger);
+  color: #ffffff;
+}
+
+/* On the black header bar the default red needs a lighter tint for contrast */
+.site-header .btn-outline-danger {
+  color: #ff8a80;
+  border-color: rgba(255, 138, 128, 0.65);
+}
+
+.site-header .btn-outline-danger:hover:not(:disabled) {
+  background-color: var(--danger);
+  border-color: var(--danger);
   color: #ffffff;
 }
 
@@ -205,26 +247,26 @@ body {
 
 .alert-danger {
   background-color: var(--danger-bg);
-  color: #991b1b;
-  border: 1px solid #fecaca;
+  color: #a50e0e;
+  border: 1px solid #f6c7c3;
 }
 
 .alert-success {
   background-color: var(--success-bg);
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+  color: #0b6b3a;
+  border: 1px solid #bfe3cc;
 }
 
 .alert-info {
-  background-color: #e0f2fe;
-  color: #075985;
-  border: 1px solid #bae6fd;
+  background-color: var(--light-blue);
+  color: #0a4fa8;
+  border: 1px solid #a8d4ff;
 }
 
 .alert-warning {
-  background-color: var(--primary-light);
-  color: #92400e;
-  border: 1px solid #fde68a;
+  background-color: var(--warning-bg);
+  color: var(--warning);
+  border: 1px solid #f3d3a3;
 }
 
 .hidden {
@@ -240,7 +282,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 23, 42, 0.6);
+  background-color: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -311,7 +353,7 @@ body {
 .landing-card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border-color);
   width: 100%;
   max-width: 480px;
@@ -343,7 +385,7 @@ body {
 
 .landing-btn-primary {
   background-color: var(--primary-color);
-  color: #0f172a;
+  color: var(--white);
   border: 1px solid var(--primary-color);
   padding: 0.85rem 1.25rem;
   font-size: 1rem;
@@ -355,12 +397,12 @@ body {
 .landing-btn-primary:hover {
   background-color: var(--primary-hover);
   border-color: var(--primary-hover);
-  color: #0f172a;
+  color: var(--white);
 }
 
 .landing-btn-secondary {
-  background-color: #ffffff;
-  color: #1e293b;
+  background-color: var(--white);
+  color: var(--text-main);
   border: 1px solid var(--border-color);
   padding: 0.82rem 1.25rem;
   font-size: 0.95rem;
@@ -369,9 +411,9 @@ body {
 }
 
 .landing-btn-secondary:hover {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
-  color: #0f172a;
+  background-color: var(--soft-gray);
+  border-color: var(--muted-gray);
+  color: var(--text-main);
 }
 
 /* ==========================================================================

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register — Transport Booking App</title>
+  <link rel="stylesheet" href="./vendor/boxicons/css/boxicons.min.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/auth.css">
 </head>
@@ -13,7 +14,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="./index.html" class="brand-link">
-        <span class="brand-icon">🚕</span>
+        <span class="brand-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
         <span>CampusRide</span>
       </a>
       <nav class="nav-actions">
@@ -26,7 +27,6 @@
   <main class="auth-wrapper">
     <div class="auth-card">
       <div class="auth-header">
-        <span class="auth-badge">Account Registration</span>
         <h1 class="auth-title">Join CampusRide</h1>
         <p class="auth-subtitle">Create your student or transport provider account</p>
       </div>
@@ -41,14 +41,14 @@
           <div class="role-selector-grid">
             <label class="role-option active" id="roleStudentCard">
               <input type="radio" name="accountType" value="student" checked>
-              <span class="role-icon">🎓</span>
+              <span class="role-icon"><i class="bx bx-book-reader" aria-hidden="true"></i></span>
               <span class="role-name">Student</span>
               <span class="role-desc">Seeking rides</span>
             </label>
 
             <label class="role-option" id="roleProviderCard">
               <input type="radio" name="accountType" value="provider">
-              <span class="role-icon">🚗</span>
+              <span class="role-icon"><i class="bx bx-car" aria-hidden="true"></i></span>
               <span class="role-name">Service Provider</span>
               <span class="role-desc">Offering rides</span>
             </label>
@@ -64,13 +64,13 @@
           <div class="provider-type-grid">
             <label class="type-option active" id="typeTaxiCard">
               <input type="radio" name="providerType" value="taxi" checked>
-              <span class="type-icon">🚕</span>
+              <span class="type-icon"><i class="bx bx-taxi" aria-hidden="true"></i></span>
               <span class="type-name">Taxi Driver</span>
             </label>
 
             <label class="type-option" id="typeMotorbikeCard">
               <input type="radio" name="providerType" value="motorbike">
-              <span class="type-icon">🛵</span>
+              <span class="type-icon"><i class="bx bx-cycling" aria-hidden="true"></i></span>
               <span class="type-name">Motorbike</span>
             </label>
           </div>
